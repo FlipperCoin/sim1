@@ -1,5 +1,5 @@
 // 2->1 multiplexer template
-module mux2_tb ();
+module mux2_tb;
 
 logic d0;
 logic d1;
