@@ -1,36 +1,35 @@
-// Full Adder/Subtractor test bench template
-module fas_test;
+module alu1bit_test;
 
 logic a;
 logic b;
 logic cin;
-logic a_ns;
+logic [1:0] op;
 logic s;
 logic cout;
 
-fas fs(.a(a), .b(b), .cin(cin), .a_ns(a_ns), .s(s), .cout(cout));
+alu1bit alu1bit(.a(a), .b(b), .cin(cin), .op(op), .s(s), .cout(cout));
 
 initial begin
     a = 1'b0;
     b = 1'b0;
     cin = 1'b0;
-    a_ns = 1'b0;
+    op = {2'b10};
 
-    #40;
+    #90;
     
     a = 1'b1;
     b = 1'b0;
     cin = 1'b0;
-    a_ns = 1'b0;
+    op = {2'b10};
 
-    #14;
+    #66;
     
     a = 1'b0;
     b = 1'b0;
     cin = 1'b0;
-    a_ns = 1'b0;
+    op = {2'b10};
 
-    #20;
+    #62;
 end
 
 endmodule

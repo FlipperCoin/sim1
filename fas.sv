@@ -15,88 +15,76 @@ localparam NotTpdHl = 8;
 localparam XorTpdLh = 7;
 localparam XorTpdHl = 5;
 
-logic g1_2;
-logic g2_17;
+logic g1_3;
+logic g2_3;
 logic g3_4;
 logic g4_5;
-logic g5_17;
-logic g17_18;
-logic g6_4;
-logic g6_7 = g6_4;
+logic g6_7;
 logic g7_8;
 logic g8_9;
-logic g9_18;
-logic g18_19;
-logic g13_10;
-logic g10_11;
+logic g9_5;
 logic g11_12;
-logic g12_19;
-logic g19_20;
-logic g13_14 = g13_10;
-logic g14_15;
-logic g15_16;
-logic g16_20;
-logic g20_21;
 
-logic g22_23;
+// cout path
 
-OR2 #(
-    .Tpdlh(OrTpdLh),
-    .Tpdhl(OrTpdHl)
+NOT #(
+    .Tpdlh(NotTpdLh),
+    .Tpdhl(NotTpdHl)
 ) g1 (
     .A(cin),
-    .B(b),
-    .Z(g1_2)
+    .Z(g1_3)
 );
+
 
 NOT #(
     .Tpdlh(NotTpdLh),
     .Tpdhl(NotTpdHl)
 ) g2 (
-    .A(g1_2),
-    .Z(g2_17)
+    .A(b),
+    .Z(g2_3)
 );
+
 
 OR2 #(
     .Tpdlh(OrTpdLh),
     .Tpdhl(OrTpdHl)
 ) g3 (
-    .A(a),
-    .B(b),
+    .A(g1_3),
+    .B(g2_3),
     .Z(g3_4)
 );
 
 NOT #(
     .Tpdlh(NotTpdLh),
     .Tpdhl(NotTpdHl)
-) g6 (
-    .A(a_ns),
-    .Z(g6_4)
+) g4 (
+    .A(g3_4),
+    .Z(g4_5)
 );
 
 OR2 #(
     .Tpdlh(OrTpdLh),
     .Tpdhl(OrTpdHl)
-) g4 (
-    .A(g3_4),
-    .B(g6_4),
-    .Z(g4_5)
+) g6 (
+    .A(c_in),
+    .B(b),
+    .Z(g6_7)
+);
+
+XOR2 #(
+    .Tpdlh(XorTpdLh),
+    .Tpdhl(XorTpdHl)
+) g10 (
+    .A(a_ns),
+    .B(a),
+    .Z(g10_8)
 );
 
 NOT #(
     .Tpdlh(NotTpdLh),
     .Tpdhl(NotTpdHl)
-) g5 (
-    .A(g4_5),
-    .Z(g5_17)
-);
-
-OR2 #(
-    .Tpdlh(OrTpdLh),
-    .Tpdhl(OrTpdHl)
 ) g7 (
     .A(g6_7),
-    .B(cin),
     .Z(g7_8)
 );
 
@@ -105,7 +93,7 @@ OR2 #(
     .Tpdhl(OrTpdHl)
 ) g8 (
     .A(g7_8),
-    .B(a),
+    .B(g10_8),
     .Z(g8_9)
 );
 
@@ -114,129 +102,37 @@ NOT #(
     .Tpdhl(NotTpdHl)
 ) g9 (
     .A(g8_9),
-    .Z(g9_18)
-);
-
-NOT #(
-    .Tpdlh(NotTpdLh),
-    .Tpdhl(NotTpdHl)
-) g13 (
-    .A(a),
-    .Z(g13_10)
+    .Z(g9_5)
 );
 
 OR2 #(
     .Tpdlh(OrTpdLh),
     .Tpdhl(OrTpdHl)
-) g10 (
-    .A(a_ns),
-    .B(g13_10),
-    .Z(g10_11)
+) g5 (
+    .A(g9_5),
+    .B(g4_5),
+    .Z(cout)
 );
 
-OR2 #(
-    .Tpdlh(OrTpdLh),
-    .Tpdhl(OrTpdHl)
+// s path
+
+XOR2 #(
+    .Tpdlh(XorTpdLh),
+    .Tpdhl(XorTpdHl)
 ) g11 (
-    .A(g10_11),
+    .A(a),
     .B(b),
     .Z(g11_12)
 );
 
-NOT #(
-    .Tpdlh(NotTpdLh),
-    .Tpdhl(NotTpdHl)
+XOR2 #(
+    .Tpdlh(XorTpdLh),
+    .Tpdhl(XorTpdHl)
 ) g12 (
     .A(g11_12),
-    .Z(g12_19)
-);
-
-OR2 #(
-    .Tpdlh(OrTpdLh),
-    .Tpdhl(OrTpdHl)
-) g14 (
-    .A(g13_14),
-    .B(cin),
-    .Z(g14_15)
-);
-
-OR2 #(
-    .Tpdlh(OrTpdLh),
-    .Tpdhl(OrTpdHl)
-) g15 (
-    .A(g14_15),
-    .B(a_ns),
-    .Z(g15_16)
-);
-
-NOT #(
-    .Tpdlh(NotTpdLh),
-    .Tpdhl(NotTpdHl)
-) g16 (
-    .A(g15_16),
-    .Z(g16_20)
-);
-
-OR2 #(
-    .Tpdlh(OrTpdLh),
-    .Tpdhl(OrTpdHl)
-) g17 (
-    .A(g2_17),
-    .B(g5_17),
-    .Z(g17_18)
-);
-
-OR2 #(
-    .Tpdlh(OrTpdLh),
-    .Tpdhl(OrTpdHl)
-) g18 (
-    .A(g17_18),
-    .B(g9_18),
-    .Z(g18_19)
-);
-
-OR2 #(
-    .Tpdlh(OrTpdLh),
-    .Tpdhl(OrTpdHl)
-) g19 (
-    .A(g18_19),
-    .B(g12_19),
-    .Z(g19_20)
-);
-
-OR2 #(
-    .Tpdlh(OrTpdLh),
-    .Tpdhl(OrTpdHl)
-) g20 (
-    .A(g19_20),
-    .B(g16_20),
-    .Z(g20_21)
-);
-
-NOT #(
-    .Tpdlh(NotTpdLh),
-    .Tpdhl(NotTpdHl)
-) g21 (
-    .A(g20_21),
-    .Z(cout)
-);
-
-XOR2 #(
-    .Tpdlh(XorTpdLh),
-    .Tpdhl(XorTpdHl)
-) g22 (
-    .A(a),
-    .B(b),
-    .Z(g22_23)
-);
-
-XOR2 #(
-    .Tpdlh(XorTpdLh),
-    .Tpdhl(XorTpdHl)
-) g23 (
-    .A(g22_23),
     .B(cin),
     .Z(s)
 );
+
 
 endmodule

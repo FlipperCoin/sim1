@@ -22,8 +22,8 @@ logic g4_a_ns;
 logic s_d2;
 logic s_d3 = s_d2;
 
-fas(.a(a),.b(b),.a_ns(g4_a_ns),.s(s_d2),.cout(cout));
-mux4(.d0(g2_d0),.d1(g3_d1),.d2(s_d2),.d3(s_d3),.sel(op),.z(s));
+fas fs(.a(a),.b(b),.cin(cin),.a_ns(g4_a_ns),.s(s_d2),.cout(cout));
+mux4 m4(.d0(g2_d0),.d1(g3_d1),.d2(s_d2),.d3(s_d3),.sel(op),.z(s));
 
 OR2 #(
     .Tpdlh(OrTpdLh),
