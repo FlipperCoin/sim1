@@ -30,6 +30,7 @@ initial begin
     op = {2'b10};
 
     #62;
+    #20;
 end
 
 endmodule

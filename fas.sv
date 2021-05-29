@@ -23,6 +23,7 @@ logic g6_7;
 logic g7_8;
 logic g8_9;
 logic g9_5;
+logic g10_8;
 logic g11_12;
 
 // cout path
@@ -66,7 +67,7 @@ OR2 #(
     .Tpdlh(OrTpdLh),
     .Tpdhl(OrTpdHl)
 ) g6 (
-    .A(c_in),
+    .A(cin),
     .B(b),
     .Z(g6_7)
 );
