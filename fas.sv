@@ -189,7 +189,7 @@ OR2 #(
 OR2 #(
     .Tpdlh(OrTpdLh),
     .Tpdhl(OrTpdHl)
-) g15 (
+) g18 (
     .A(g17_18),
     .B(g9_18),
     .Z(g18_19)
@@ -198,7 +198,7 @@ OR2 #(
 OR2 #(
     .Tpdlh(OrTpdLh),
     .Tpdhl(OrTpdHl)
-) g15 (
+) g19 (
     .A(g18_19),
     .B(g12_19),
     .Z(g19_20)
@@ -207,7 +207,7 @@ OR2 #(
 OR2 #(
     .Tpdlh(OrTpdLh),
     .Tpdhl(OrTpdHl)
-) g15 (
+) g20 (
     .A(g19_20),
     .B(g16_20),
     .Z(g20_21)
@@ -216,7 +216,7 @@ OR2 #(
 NOT #(
     .Tpdlh(NotTpdLh),
     .Tpdhl(NotTpdHl)
-) g16 (
+) g21 (
     .A(g20_21),
     .Z(cout)
 );
