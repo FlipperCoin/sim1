@@ -26,10 +26,7 @@ initial begin
     cin = 1'b0;
 
     #(30*63+52+7);
-    
-    cin = 0'b1;
-
-    #(30*63+52+5+200);
+    #200;
 end
 // End of your code
 
